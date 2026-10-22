@@ -33,8 +33,14 @@ public class DeliveryService {
     }
 
     public void assignCourier(
-            Delivery delivery,
-            Courier courier) {
+        Delivery delivery,
+        Courier courier) {
+
+        if (courier == null) {
+            throw new IllegalArgumentException(
+                    "Курьер не может быть пустым"
+            );
+        }
 
         if (delivery.getStatus()
                 != DeliveryStatus.CREATED) {

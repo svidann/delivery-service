@@ -231,5 +231,37 @@ public class DeliveryServiceTest {
                 delivery.getStatus()
         );
     }
+    
+    @Test
+    public void testCannotAssignNullCourier() {
+        DeliveryRepository repository =
+                new InMemoryDeliveryRepository();
 
+        DeliveryService service =
+                new DeliveryService(repository);
+
+        Customer customer =
+                new Customer(5, "Мария", "+375291112233");
+
+        Package packageItem =
+                new Package(5, "Документы", 1.0);
+
+        Delivery delivery =
+                service.createDelivery(
+                        5,
+                        packageItem,
+                        customer
+                );
+
+        assertThrows(
+                IllegalArgumentException.class,
+                () -> service.assignCourier(delivery, null)
+        );
+
+        assertEquals(
+                DeliveryStatus.CREATED,
+                delivery.getStatus()
+        );
+    
+}
 }
