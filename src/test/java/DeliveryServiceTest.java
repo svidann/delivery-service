@@ -35,15 +35,15 @@ public class DeliveryServiceTest {
         assertNotNull(delivery);
 
 
-        assertEquals(
-                DeliveryStatus.CREATED,
-                delivery.getStatus()
-        );
-
         // assertEquals(
-        //         DeliveryStatus.DELIVERED,
+        //         DeliveryStatus.CREATED,
         //         delivery.getStatus()
         // );
+
+        assertEquals(
+                DeliveryStatus.DELIVERED,
+                delivery.getStatus()
+        );
     }
 
 
