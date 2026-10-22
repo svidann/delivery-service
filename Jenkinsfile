@@ -39,7 +39,7 @@ pipeline {
             }
         }
     }
-
+//comment
     post {
         always {
             echo 'Pipeline execution finished.'
