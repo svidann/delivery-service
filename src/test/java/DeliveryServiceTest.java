@@ -191,4 +191,45 @@ public class DeliveryServiceTest {
         );
     }
 
+    
+    @Test
+    public void testCannotDeliverBeforeTransit() {
+        DeliveryRepository repository =
+                new InMemoryDeliveryRepository();
+
+        DeliveryService service =
+                new DeliveryService(repository);
+
+        Customer customer =
+                new Customer(4, "Анна", "+375291234567");
+
+        Courier courier =
+                new Courier(4, "Иван");
+
+        Package packageItem =
+                new Package(4, "Документы", 2.5);
+
+        Delivery delivery =
+                service.createDelivery(
+                        4,
+                        packageItem,
+                        customer
+                );
+
+        service.assignCourier(delivery, courier);
+
+        assertThrows(
+                IllegalStateException.class,
+                () -> service.changeStatus(
+                        delivery,
+                        DeliveryStatus.DELIVERED
+                )
+        );
+
+        assertEquals(
+                DeliveryStatus.ASSIGNED,
+                delivery.getStatus()
+        );
+    }
+
 }
