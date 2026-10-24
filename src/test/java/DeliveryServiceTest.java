@@ -232,36 +232,36 @@ public class DeliveryServiceTest {
         );
     }
     
-//     @Test
-//     public void testCannotAssignNullCourier() {
-//         DeliveryRepository repository =
-//                 new InMemoryDeliveryRepository();
+    @Test
+    public void testCannotAssignNullCourier() {
+        DeliveryRepository repository =
+                new InMemoryDeliveryRepository();
 
-//         DeliveryService service =
-//                 new DeliveryService(repository);
+        DeliveryService service =
+                new DeliveryService(repository);
 
-//         Customer customer =
-//                 new Customer(5, "Мария", "+375291112233");
+        Customer customer =
+                new Customer(5, "Мария", "+375291112233");
 
-//         Package packageItem =
-//                 new Package(5, "Документы", 1.0);
+        Package packageItem =
+                new Package(5, "Документы", 1.0);
 
-//         Delivery delivery =
-//                 service.createDelivery(
-//                         5,
-//                         packageItem,
-//                         customer
-//                 );
+        Delivery delivery =
+                service.createDelivery(
+                        5,
+                        packageItem,
+                        customer
+                );
 
-//         assertThrows(
-//                 IllegalArgumentException.class,
-//                 () -> service.assignCourier(delivery, null)
-//         );
+        assertThrows(
+                IllegalArgumentException.class,
+                () -> service.assignCourier(delivery, null)
+        );
 
-//         assertEquals(
-//                 DeliveryStatus.CREATED,
-//                 delivery.getStatus()
-//         );
+        assertEquals(
+                DeliveryStatus.CREATED,
+                delivery.getStatus()
+        );
     
-// }
+}
 }
