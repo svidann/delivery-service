@@ -26,7 +26,7 @@ pipeline {
                 bat 'mvn -B clean compile'
             }
         }
-
+//commentar
         stage('Test') {
             steps {
                 bat 'mvn -B test'
@@ -39,7 +39,7 @@ pipeline {
             }
         }
     }
-//comment
+
     post {
         always {
             echo 'Pipeline execution finished.'
